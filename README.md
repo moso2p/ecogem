@@ -128,7 +128,7 @@ Then `ecogem install` will:
     ```ruby
     require "ecogem"
 
-    source "https://rubygems.org"
+    source "https://rubygems.org/"
 
     gem 'gem-b', path: Ecogem.git_path("git@github.com:me/gem-b.git master")
     gem 'gem-a', path: Ecogem.git_path("git@github.com:me/gem-a.git master")
