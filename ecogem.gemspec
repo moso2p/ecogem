@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = [""]
   spec.summary       = %q{Supplements Bundler for installing private gems.}
   spec.description   = %q{}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/moso2p/ecogem"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
