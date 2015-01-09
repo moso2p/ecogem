@@ -11,6 +11,7 @@ module Ecogem
         def execute
           ::Ecogem.new_workspace(@args) do |ws|
             gemfile = "--gemfile=#{ws.gemfile.write.inspect}"
+            ws.gitsfile.save
             args = [*@args.bundler_args, gemfile].join(' ')
             command = "bundle install #{args}"
             system command
