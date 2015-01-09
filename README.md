@@ -59,13 +59,13 @@ Okay. The last option is Ecogem.
 ## Dependencies
 
 * fork(2)
-    * Windows and several other platforms are not supported.
+    * Windows and several other platforms are not supported; please contribute!
 
 * Ruby >= 2.1 and ~> 2.2
     * Tested on 2.1.5 (MRI)
 
 * Bundler >= 1.7.9
-    * Tested on 1.7.9
+    * Tested with 1.7.9
 
 ## Installation
 
@@ -139,7 +139,7 @@ Then `ecogem install` will:
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/ecogem/fork )
+1. Fork it ( https://github.com/moso2p/ecogem/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
