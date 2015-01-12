@@ -4,7 +4,7 @@ Supplements Bundler for installing private gems.
 
 ## Preface
 
-When the gem A depends on my private gem B whose source is served from GitHub, I can write Gemfile with _:git_ option.
+When my gem A depends on my private gem B whose source is served from GitHub, I can write Gemfile with _:git_ option.
 
 A's Gemfile:
 
