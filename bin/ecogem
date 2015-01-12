@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'ecogem'
+
+Ecogem::Cli.start(ARGV)
+
