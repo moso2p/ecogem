@@ -79,7 +79,7 @@ Also install Bundler if not installed:
 
 ## Usage
 
-Rename your Gemfile to Ecogemfile and execute:
+Rename all your Gemfiles to Ecogemfiles and execute:
 
     $ ecogem install
 
@@ -102,9 +102,9 @@ Then `ecogem install` will:
     gem 'rake' # from rubygems.org
     ```
 
-1. fetch gem-a's Gemfile
+1. fetch gem-a's Ecogemfile
 
-    gem-a's Gemfile: 
+    gem-a's Ecogemfile: 
 
     ```ruby
     source 'https://rubygems.org'
@@ -112,9 +112,9 @@ Then `ecogem install` will:
     gemspec
     ```
 
-1. fetch gem-b's Gemfile
+1. fetch gem-b's Ecogemfile
 
-    gem-b's Gemfile:
+    gem-b's Ecogemfile:
 
     ```ruby
     source 'https://rubygems.org'
@@ -126,10 +126,13 @@ Then `ecogem install` will:
     Gemfile:
 
     ```ruby
-    source 'https://rubygems.org'
-    gem 'gem-b', '>= 0', git: 'git@github.com:me/gem-b.git', branch: 'master'
-    gem 'gem-a', '>= 0', git: 'git@github.com:me/gem-a.git', branch: 'master'
-    gem 'rake', '>= 0'
+    require "ecogem"
+
+    source "https://rubygems.org"
+
+    gem 'gem-b', Ecogem.git_path("git@github.com:me/gem-b.git master")
+    gem 'gem-a', Ecogem.git_path("git@github.com:me/gem-a.git master")
+    gem 'rake'
     ```
 
 1. and finally execute `bundle install` with the new Gemfile
