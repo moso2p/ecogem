@@ -130,8 +130,8 @@ Then `ecogem install` will:
 
     source "https://rubygems.org"
 
-    gem 'gem-b', Ecogem.git_path("git@github.com:me/gem-b.git master")
-    gem 'gem-a', Ecogem.git_path("git@github.com:me/gem-a.git master")
+    gem 'gem-b', path: Ecogem.git_path("git@github.com:me/gem-b.git master")
+    gem 'gem-a', path: Ecogem.git_path("git@github.com:me/gem-a.git master")
     gem 'rake'
     ```
 
