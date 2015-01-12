@@ -58,7 +58,7 @@ Okay. The last option is Ecogem.
 
 ## Dependencies
 
-* fork(2) and UNIX domain socket
+* fork(2)
     * Windows and several other platforms are not supported.
 
 * Ruby >= 2.1 and ~> 2.2
