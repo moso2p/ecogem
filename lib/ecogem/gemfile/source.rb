@@ -49,7 +49,7 @@ module Ecogem
       def code
         @code ||= begin
           if git?
-            "path: Ecogem.git_path(#{git.key.inspect})"
+            "path: Ecogem.git_path(#{git_source.key.inspect})"
           elsif path?
             "path: #{path.inspect}"
           elsif source?
