@@ -32,7 +32,7 @@ module Ecogem
       end
 
       def relative_path
-        @relative_path ||= ::Pathname.new(path).relative_path_from(@dependency.gemfile.dir).to_s
+        @relative_path ||= ::Pathname.new(path).relative_path_from(::Pathname.new(@dependency.gemfile.dir)).to_s
       end
 
       def source
