@@ -102,7 +102,7 @@ Then `ecogem install` will:
     gem 'rake' # from rubygems.org
     ```
 
-1. fetch gem-a's Ecogemfile
+1. fetch the gem-a repo and parse gem-a's Ecogemfile
 
     gem-a's Ecogemfile: 
 
@@ -112,7 +112,7 @@ Then `ecogem install` will:
     gemspec
     ```
 
-1. fetch gem-b's Ecogemfile
+1. fetch the gem-b repo and parse gem-b's Ecogemfile
 
     gem-b's Ecogemfile:
 
@@ -130,9 +130,9 @@ Then `ecogem install` will:
 
     source "https://rubygems.org/"
 
-    gem 'gem-b', path: Ecogem.git_path("git@github.com:me/gem-b.git master")
-    gem 'gem-a', path: Ecogem.git_path("git@github.com:me/gem-a.git master")
-    gem 'rake'
+    gem "gem-b", path: Ecogem.git_path("git@github.com:me/gem-b.git master")
+    gem "gem-a", path: Ecogem.git_path("git@github.com:me/gem-a.git master")
+    gem "rake"
     ```
 
 1. and finally execute `bundle install` with the new Gemfile
