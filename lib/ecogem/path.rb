@@ -6,10 +6,6 @@ module Ecogem
       @dir = dir
     end
 
-    def key
-      @dir
-    end
-
     private def gemfile_path
       @gemfile_path ||= ::File.expand_path("#{dir}/Ecogemfile")
     end
