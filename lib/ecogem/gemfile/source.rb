@@ -30,6 +30,10 @@ module Ecogem
         @path ||= ::File.expand_path(@data.options['path'].to_s, @dependency.gemfile.dir)
       end
 
+      def relative_path
+        @relative_path ||= ::Pathname.new(path).relative_path_from(@dependency.gemfile.dir).to_s
+      end
+
       def source
         @data.options['remotes'][0]
       end
@@ -51,7 +55,7 @@ module Ecogem
           if git?
             "path: Ecogem.git_path(#{git_source.key.inspect})"
           elsif path?
-            "path: #{path.inspect}"
+            "path: #{relative_path.inspect}"
           elsif source?
             "source: #{source.inspect}"
           end
