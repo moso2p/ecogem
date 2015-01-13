@@ -59,7 +59,7 @@ module Ecogem
       @exported_dependencies ||= begin
         a = []
         extracted_dependencies.each do |d|
-          if d.git?
+          if d.source.git?
             ds = extracted_dependencies_by_names[d.name]
             next if ds.find{|i| i.source.path?}
           end
