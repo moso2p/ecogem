@@ -85,7 +85,8 @@ module Ecogem
         pid = ::Process.fork do
           params = ::Marshal.load(in_r)
 
-          ::Dir.chdir(::File.dirname(params[:path])) do
+          ::Dir.chdir(::File.dirname(params[:path])) do |dir|
+            ENV['BUNDLE_GEMFILE'] = params[:path]
             dsl = ::Bundler::Dsl.new
             dsl.eval_gemfile(params[:path])
             result = ::Ecogem::Gemfile::Marshal.new(dsl).to_data
