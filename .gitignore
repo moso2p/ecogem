@@ -14,4 +14,3 @@
 mkmf.log
 /.ruby-version
 /*.gem
-/spec/features/basic_example/Gemfile
