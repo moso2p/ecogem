@@ -1,6 +1,8 @@
 module Ecogem
   class Gemfile
     class Dependency
+      attr_reader :gemfile
+      
       def initialize(gemfile, data)
         @gemfile = gemfile
         @data = data

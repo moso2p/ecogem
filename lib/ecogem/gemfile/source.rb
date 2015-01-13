@@ -27,7 +27,7 @@ module Ecogem
       end
 
       def path
-        @data.options['path']
+        @path ||= ::File.expand_path(@data.options['path'].to_s, @dependency.gemfile.dir)
       end
 
       def source
@@ -38,8 +38,12 @@ module Ecogem
         @data.ref
       end
 
-      def git
-        @git ||= ::Ecogem::Git.new(git_uri, ref)
+      def git_source
+        @git_source ||= ::Ecogem::Git.new(git_uri, ref)
+      end
+
+      def path_source
+        @path_source ||= ::Ecogem::Path.new(path)
       end
 
       def code
@@ -47,7 +51,7 @@ module Ecogem
           if git?
             "path: Ecogem.git_path(#{git.key.inspect})"
           elsif path?
-            "path: #{path.to_s.inspect}"
+            "path: #{path.inspect}"
           elsif source?
             "source: #{source.inspect}"
           end

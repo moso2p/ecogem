@@ -3,7 +3,7 @@ require_relative 'ecogem/version'
 Object.autoload :Bundler, 'bundler' unless Object.const_defined?(:Bundler, false)
 
 module Ecogem
-  %w[cli config env gemfile git gitsfile util workspace].each do |name|
+  %w[cli config env gemfile git gitsfile path util workspace].each do |name|
     pascal = name.split(/_/).map{|i| i[0].upcase + i[1..-1]}.join('')
     autoload pascal, ::File.expand_path("../ecogem/#{name}", __FILE__)
   end

@@ -9,24 +9,33 @@ module Ecogem
       @path = path
     end
 
+    def dir
+      @dir ||= ::File.dirname(@path)
+    end
+
     private def dependencies
       @dependencies ||= data.dependencies.map{|i| ::Ecogem::Gemfile::Dependency.new(self, i)}
     end
 
     private def extracted_dependencies
-      @extracted_dependencies ||= extract_dependencies([], [], false)
+      @extracted_dependencies ||= extract_dependencies([], [], [dir], false)
     end
 
-    protected def extract_dependencies(into, gits, git_only)
+    protected def extract_dependencies(into, gits, paths, subfile)
       dependencies.each do |d|
         if d.source.git?
-          unless gits.include?(d.source.git.key)
-            gits << d.source.git.key
-            d.source.git.gemfile.extract_dependencies into, gits, true if d.source.git.gemfile
+          unless gits.include?(d.source.git_source.key)
+            gits << d.source.git_source.key
+            d.source.git_source.gemfile.extract_dependencies into, gits, paths, true if d.source.git_source.gemfile
           end
           into << d
+        elsif d.source.path?
+          unless paths.include?(d.source.path_source.key)
+            paths << d.source.path_source.key
+            d.source.path_source.gemfile.extract_dependencies into, gits, paths, true if d.source.path_source.gemfile
+          end
         else
-          into << d unless git_only
+          into << d unless subfile
         end
       end
       into
@@ -47,7 +56,7 @@ module Ecogem
     end
 
     def write(dir = nil, name = nil)
-      dir ||= ::File.dirname(@path)
+      dir ||= self.dir
       name ||= 'Gemfile'
       path = "#{dir}/#{name}"
       ::File.write "#{dir}/#{name}", code
