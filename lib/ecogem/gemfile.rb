@@ -44,6 +44,31 @@ module Ecogem
       into
     end
 
+    private def extracted_dependencies_by_names
+      @extracted_dependencies_by_names ||= begin
+        h = {}
+        extracted_dependencies.each do |d|
+          h[d.name] ||= []
+          h[d.name] << d
+        end
+        h
+      end
+    end
+
+    private def exported_dependencies
+      @exported_dependencies ||= begin
+        a = []
+        extracted.dependencies.each do |d|
+          if d.git?
+            ds = extracted_dependencies_by_names[d.name]
+            next if ds.find{|i| i.source.path?}
+          end
+          a << d
+        end
+        a
+      end
+    end
+
     private def sources
       @sources ||= data.sources.instance_variable_get(:@rubygems_aggregate).remotes.map{|i| i.to_s}
     end
@@ -53,7 +78,7 @@ module Ecogem
         a = []
         a << 'require "ecogem"'
         a << sources.reverse.map{|i| "source #{i.inspect}"}.join("\n")
-        a << extracted_dependencies.map{|i| i.code}.uniq.join("\n")
+        a << exported_dependencies.map{|i| i.code}.uniq.join("\n")
         a.join("\n\n")
       end
     end
