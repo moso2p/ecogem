@@ -19,7 +19,6 @@ module Ecogem
   def self.new_workspace(args, options = {}, &block)
     Workspace.new(args, options) do |ws|
       begin
-        ::Thread.current[:ecogem_workspaces] ||= []
         workspaces << ws
         break block.call(ws)
       ensure
