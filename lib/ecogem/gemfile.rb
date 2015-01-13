@@ -34,6 +34,7 @@ module Ecogem
             paths << d.source.path_source.key
             d.source.path_source.gemfile.extract_dependencies into, gits, paths, true if d.source.path_source.gemfile
           end
+          into << d
         else
           into << d unless subfile
         end
