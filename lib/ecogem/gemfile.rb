@@ -18,7 +18,7 @@ module Ecogem
     end
 
     private def extracted_dependencies
-      @extracted_dependencies ||= extract_dependencies([], [], [dir], false)
+      @extracted_dependencies ||= extract_dependencies([], [], [], false)
     end
 
     protected def extract_dependencies(into, gits, paths, subfile)
@@ -27,14 +27,14 @@ module Ecogem
           unless gits.include?(d.source.git_source.key)
             gits << d.source.git_source.key
             d.source.git_source.gemfile.extract_dependencies into, gits, paths, true if d.source.git_source.gemfile
+            into << d
           end
-          into << d
         elsif d.source.path?
           unless paths.include?(d.source.path_source.key)
             paths << d.source.path_source.key
             d.source.path_source.gemfile.extract_dependencies into, gits, paths, true if d.source.path_source.gemfile
+            into << d
           end
-          into << d
         else
           into << d unless subfile
         end
