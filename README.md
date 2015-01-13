@@ -137,6 +137,27 @@ Then `ecogem install` will:
 
 1. and finally execute `bundle install` with the new Gemfile
 
+## Configuration File
+
+Ecogem reads your configuration file and configures its runtime environment.
+
+The location of file is `~/.ecogem/config`. ~ is the current user's home directory.
+
+## Multiple SSH Keys for Fetching Repositories
+
+Ecogem supports multiple SSH keys for fetching repositories, described at [this gist](https://gist.github.com/jexchan/2351996
+).
+
+Write your uri aliases in your config like:
+
+```yaml
+git_sources:
+- uri: git@github.com:username/my.git
+  uri_alias: git@github.com-username:username/my.git
+```
+
+Then Ecogem converts the uri to the uri_alias.
+
 ## Contributing
 
 1. Fork it ( https://github.com/moso2p/ecogem/fork )
