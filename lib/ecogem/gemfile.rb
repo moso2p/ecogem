@@ -82,11 +82,13 @@ module Ecogem
         pid = ::Process.fork do
           params = ::Marshal.load(in_r)
 
-          dsl = ::Bundler::Dsl.new
-          dsl.eval_gemfile(params[:path])
-          result = ::Ecogem::Gemfile::Marshal.new(dsl).to_data
+          ::Dir.chdir(::File.dirname(params[:path])) do
+            dsl = ::Bundler::Dsl.new
+            dsl.eval_gemfile(params[:path])
+            result = ::Ecogem::Gemfile::Marshal.new(dsl).to_data
+            ::Marshal.dump(result, out_w)
+          end
 
-          ::Marshal.dump(result, out_w)
           ::Process.exit!
         end
         ::Process.waitpid(pid)
