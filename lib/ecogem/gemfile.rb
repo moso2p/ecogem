@@ -9,10 +9,6 @@ module Ecogem
       @path = path
     end
 
-    def dir
-      @dir ||= ::File.dirname(@pah)
-    end
-
     private def dependencies
       @dependencies ||= data.dependencies.map{|i| ::Ecogem::Gemfile::Dependency.new(self, i)}
     end
