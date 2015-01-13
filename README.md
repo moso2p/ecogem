@@ -1,6 +1,6 @@
 # Ecogem
 
-Supplements Bundler for installing private gems.
+Supplements Bundler for installing private gems. https://rubygems.org/gems/ecogem
 
 ## Preface
 
