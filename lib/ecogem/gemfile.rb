@@ -36,11 +36,13 @@ module Ecogem
           end
           into << d
         elsif d.source.path?
-          unless paths.include?(d.source.path)
-            paths << d.source.path
-            d.source.path_source.gemfile.extract_dependencies into, gits, paths, true if d.source.path_source.gemfile
+          unless subfile
+            unless paths.include?(d.source.path)
+              paths << d.source.path
+              d.source.path_source.gemfile.extract_dependencies into, gits, paths, true if d.source.path_source.gemfile
+            end
+            into << d
           end
-          into << d
         else
           into << d unless subfile
         end
