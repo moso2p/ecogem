@@ -18,7 +18,13 @@ module Ecogem
     end
 
     private def extracted_dependencies
-      @extracted_dependencies ||= extract_dependencies([], [], [], false)
+      @extracted_dependencies ||= begin
+        ds = extract_dependencies([], [], [], false)
+        ds.each do |i|
+          puts "#{i.to_yaml}"
+        end
+        ds
+      end
     end
 
     protected def extract_dependencies(into, gits, paths, subfile)
