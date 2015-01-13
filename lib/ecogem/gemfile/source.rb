@@ -51,7 +51,7 @@ module Ecogem
           if git?
             "path: Ecogem.git_path(#{git_source.key.inspect})"
           elsif path?
-            "path: #{path_source.dir.inspect}"
+            "path: #{path.inspect}"
           elsif source?
             "source: #{source.inspect}"
           end
