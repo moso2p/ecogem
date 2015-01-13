@@ -1,5 +1,5 @@
 RSpec.describe "basic example" do
-  it "" do
+  it do
     Dir.chdir(File.expand_path('../basic_example', __FILE__)) do |dir|
       Ecogem.new_workspace(nil) do |ws|
         gemfile = "--gemfile=#{ws.gemfile.write.inspect}"
