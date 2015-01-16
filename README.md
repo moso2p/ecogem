@@ -4,7 +4,7 @@ Supplements Bundler for installing private gems. https://rubygems.org/gems/ecoge
 
 ## Preface
 
-When my gem A depends on my private gem B whose source is served from GitHub, I can write Gemfile with _:git_ option.
+When my gem A depends on my private gem B whose source is served from GitHub, I can specify B's location in A's Gemfile with _:git_ option outside A's gemspec.
 
 A's Gemfile:
 
@@ -27,7 +27,7 @@ Then `bundle install` prints:
 
     Could not find gem 'gem-b (>= 0) ruby', which is required by gem 'gem-a (>= 0) ruby', in any of the sources.
 
-Oh, my! Bundler does not resolve such deep dependencies.
+Oh, my! Bundler does not resolve dependencies specified outside gemspec recursively.
 
 To solve this, I need to:
 
