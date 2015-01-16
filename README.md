@@ -4,7 +4,7 @@ Supplements Bundler for installing private gems. https://rubygems.org/gems/ecoge
 
 ## Preface
 
-When my gem A depends on my private gem B whose source is served from GitHub, I can specify B's location with _:git_ in A's Gemfile rather than A's gemspec in development.
+My gem A depends on my private gem B whose source is served from GitHub. In development, I can specify B's location with _:git_ option in A's Gemfile rather than A's gemspec.
 
 A's Gemfile:
 
