@@ -27,7 +27,7 @@ Then `bundle install` prints:
 
     Could not find gem 'gem-b (>= 0) ruby', which is required by gem 'gem-a (>= 0) ruby', in any of the sources.
 
-Oh, my! Of course, Bundler does not resolve such dependencies.
+Oh, my! Bundler does not resolve such dependencies.
 
 To solve this, I need to:
 
